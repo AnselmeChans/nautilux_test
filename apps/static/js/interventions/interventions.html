@@ -1,0 +1,150 @@
+<div class="page-header">
+        <h1  style="text-align: center;">Liste des interventions recensées</h1>
+    
+</div>
+
+<div class="jumbotron">
+
+    <br/>
+    <button type="button" style="background-color:rgb(85, 69, 69); border-color:blue; color:white" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#newCommandModal">Ajouter une nouvelle intervention</button>
+</div>
+
+<!-- Modal -->
+<div id="newCommandModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Saisissez une nouvelle intervention</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group" >
+                        <label for="title_intervention" class="col-sm-1 control-label">Titre:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="newCommand" ng-model="vm.new.title_intervention">
+                        </div>
+                    </div>
+                
+
+                    <div class="form-group">
+                        <label for="date_intervention" class="col-sm-1 control-label">Date:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="newOs" ng-model="vm.new.date_intervention">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="adress_intervention" class="col-sm-1 control-label">Adresse:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="newVersion" ng-model="vm.new.adress_intervention">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-sm-1 control-label">Description:</label>
+                        <div class="col-sm-12">
+                            <textarea type="text" class="form-control" id="newNote" ng-model="vm.new.description" rows="5">
+                            </textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="vm.newCommand()">Envoyer</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="container">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Adresse</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="command in vm.commands | orderBy:'-id' | limitTo:quantity | filter:query ">
+                <td>
+                    <a href="" ng-click="vm.copyCommand(command)" data-toggle="modal"
+                       data-target="#updateCommandModal"><div ng-bind="command.title_intervention"></div></a>
+                </td>
+                <td>
+                    {{ command.date_intervention }}
+                </td>
+                <td>
+                    {{ command.adress_intervention }}
+                </td>
+                <td>
+                    {{ command.description }}
+                </td>
+                <td>
+                
+                        <button class="btn btn-default" title="Delete">
+                            <a href="" ng-click="vm.deleteCommand(command)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+                        </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-default" title="Copy command to clipboard">
+                            <a href="" clipboard text="command.command">
+                                <i class="fa fa-clipboard" aria-hidden="true"></i>
+                            </a>
+                        </button>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="updateCommandModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Modifier l'</b> intervention</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group" >
+                        <label for="command" class="col-sm-1 control-label">Titre:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="updateCommand" ng-model="vm.edit.command" value="vm.edit.command">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="os" class="col-sm-1 control-label">Date:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="updateOs" ng-model="vm.edit.os">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="version" class="col-sm-1 control-label">Adresse:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="updateVersion" ng-model="vm.edit.version" value="vm.edit.version">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="note" class="col-sm-1 control-label">Description:</label>
+                        <div class="col-sm-12">
+                            <textarea type="text" class="form-control" id="upatedNote" ng-model="vm.edit.note"
+                                      value="vm.edit.note" rows="5"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="vm.updateCommand()">Modifier</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+            </div>
+        </div>
+    </div>
+</div>

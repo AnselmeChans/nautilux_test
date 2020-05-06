@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <div class="container" ng-controller="AuthController as vm">
+        <div ng-if="!vm.isLoggedIn()">
+            <h2>Bienvenue la plateforme d'interventions Nautilux!</i></h2>
+        <div></div>
+            
+            <p><a class="btn btn-primary btn-lg" href="#/register/" role="button">Créer un compte! </a></p>
+        </div>
+
+        <div ng-if="vm.isLoggedIn()">
+            <h2>Bienvenue <i>{{ vm.$storage.username }}</i> vous êtes actuellement connecté !</h2>
+            </br>
+            </br>
+            <p><a class="btn btn-primary btn-lg" href="#/interventions" role="button">Consulter les interventions </a></p>
+        </div>
+    </div>
+    <div class="container">
+        <p><a class="btn btn-default" href="https://github.com/" role="button"> Lien vers le code sur GitHub </a></p>
+    </div>
+</div>
+
+                        
+
