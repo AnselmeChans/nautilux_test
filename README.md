@@ -19,7 +19,7 @@ Il est nécessaire de bien suivre les étapes d'installation de l'application qu
 #### Activer votre environnement virtuel
 
 ```bash
-source  tutorial-env/bin/activate
+source  InterventionEnv/bin/activate
 
 ```
 
