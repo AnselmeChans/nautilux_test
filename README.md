@@ -13,7 +13,7 @@ source  tutorial-env/bin/activate
 
 ```bash
 cd requirements
-pip install -r base.txt
+pip install -r requirements.txt
 
 ```
 
