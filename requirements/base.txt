@@ -1,6 +1,0 @@
-#Created by "reqpy"
-#https://github.com/gopar/reqpy
-Django==1.9.4
-djangorestframework==3.3.3
-Markdown==2.6.6
-django_extensions
